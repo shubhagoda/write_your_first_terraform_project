@@ -2,23 +2,17 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.16"
+      version = "~> 5.0"
     }
   }
-
-  required_version = ">= 1.2.0"
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region = "ap-south-1"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "Terraform_Demo"
-  }
+# Stop existing EC2 instance
+resource "aws_ec2_instance_state" "stop_target_server" {
+  instance_id = "i-0c6d88151be410380"
+  state       = "stopped"
 }
-
