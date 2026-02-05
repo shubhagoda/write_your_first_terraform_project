@@ -10,14 +10,14 @@ terraform {
 }
 
 provider "aws" {
-  region  = "ap-south-1"
+  region  = "us-west-2"
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-02b8269d5e85954ef"
-  instance_type = "t3.micro"
+  ami           = "ami-830c94e3"
+  instance_type = "t2.micro"
 
   tags = {
-    Name = "target server"
+    Name = "Terraform_Demo"
   }
 }
